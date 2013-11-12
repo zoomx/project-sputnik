@@ -41,7 +41,7 @@ void loop() {
       forward();
   //  stopMoving();
     backward();
-   // stopMoving();
+   // stopMoving(); 
    
    
 }
