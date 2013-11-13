@@ -39,7 +39,7 @@ void setup()
  */
 
 void loop() {
-switch dir {
+switch (dir) {
 case 1:
     forward();
     break;
@@ -47,7 +47,7 @@ case 2:
     backward();
     break;
 default:
-    StopMoving();
+    stopMoving();
     break;
   }
   int dist = readSonar();
