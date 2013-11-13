@@ -42,13 +42,13 @@ void loop() {
 switch dir {
 case 1:
     forward();
-    break
+    break;
 case 2:
     backward();
-    break
+    break;
 default:
-    StopMoving()
-    break
+    StopMoving();
+    break;
   }
   int dist = readSonar();
   if(dist < threshold && dist != -1 ){
