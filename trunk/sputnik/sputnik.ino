@@ -39,7 +39,7 @@ void setup()
  */
 
 void loop() {
-switch dir {}
+switch dir {
 case 1:
     forward();
     break
