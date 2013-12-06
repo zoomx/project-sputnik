@@ -43,7 +43,6 @@ void setup()
 }
 void dummyRun(){
   delay(1000);
-  
   Serial.println("Begin dummyrun");
   forward();
   delay(1000);
