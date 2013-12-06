@@ -10,7 +10,6 @@ class Sputnik{
 		void backward();
 		void turn(int turnTime, int direction);
 		void stopMoving();
-		void stopMoving(int stopTime);
 		
 	private:
 		boolean verbose = false;

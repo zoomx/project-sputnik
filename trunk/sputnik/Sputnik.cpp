@@ -11,6 +11,13 @@ Sputnik::Sputnik(int _directionPin, int _motorPin, int _turnPin, int _turnPowerP
 	turnPin = turnPin;
 	turnPowerPin = turnPowerPin;
 	verbose = verbose;
+
+	pinMode(directionPin, OUTPUT); 
+	pinMode(motorPin, OUTPUT); 
+    
+    
+	pinMode(turnPin, OUTPUT); 
+	pinMode(turnPowerPin, OUTPUT); 
 }
 
 
@@ -42,15 +49,11 @@ void Sputnik::turn(int turnTime, int dir){
 }
 
 void Sputnik::stopMoving(){
-	stopMoving(1000);
-}
-
-void Sputnik::stopMoving(int stopTime){
 
 	if(verbose){
 		Serial.println("Stop");
 	}
 	digitalWrite(motorPin, LOW); // turns the motor On
-	delay(stopTime);
+	delay(1000);
 }
 
