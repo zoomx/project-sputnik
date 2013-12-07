@@ -1,15 +1,5 @@
 #include <Sputnik.h>
 
-/*     -----------------------------------------------------------
- *     |  Project Sputnik                                        |
- *     |  Main controller                                        |
- *     -----------------------------------------------------------
- * 
- * This is the master controller which supervises the driving
- * All functions created here should be put in a library
- *
- */
-
 int echoPin =7; // Echo Pin
 int trigPin =8; // Trigger Pin
 
@@ -20,46 +10,16 @@ int offTime = 1000; //the number of milliseconds for the motor to turn off for
 
 int threshold = 100;  //In centimeters, the distance from objects where the car stops
 
-Sputnik sputnik (9,10,21,20);
-void setup()
-{ 
+Sputnik sputnik  (9,10,21,20,true);
+void setup(){
+  
   Serial.begin (9600);
 
   pinMode(ledPort, OUTPUT); 
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
-
-}
-void dummyRun(){
-  delay(1000);
-  Serial.println("Begin dummyrun");
-  sputnik.forward();
-  delay(1000);
-  sputnik.stopMoving();
-  delay(1000);
-  sputnik.backward();
-  delay(1000);
-  sputnik.stopMoving();
-  sputnik.forward();
-  sputnik.turn(1000, 0);
-  sputnik.stopMoving();
-  sputnik.backward();
-  delay(1000);
-  sputnik.stopMoving();
-  sputnik.forward();
-  sputnik.turn(1000, 1);
-  sputnik.stopMoving();
-
-  Serial.println("End dummyrun");
-
-  Serial.println("*************************************");
 }
 
-
-/*
- * loop() - this function will start after setup finishes and then repeat
- * we call a function called motorOnThenOff()
- */
 
 void loop() {
   dummyRun();
@@ -91,6 +51,32 @@ void loop() {
    dir = 1;
    }*/
 }
+
+void dummyRun(){
+  delay(1000);
+  Serial.println("Begin dummyrun");
+  sputnik.forward();
+  delay(1000);
+  sputnik.stopMoving();
+  delay(1000);
+  sputnik.backward();
+  delay(1000);
+  sputnik.stopMoving();
+  sputnik.forward();
+  sputnik.turn(1000, 0);
+  sputnik.stopMoving();
+  sputnik.backward();
+  delay(1000);
+  sputnik.stopMoving();
+  sputnik.forward();
+  sputnik.turn(1000, 1);
+  sputnik.stopMoving();
+
+  Serial.println("End dummyrun");
+
+  Serial.println("*************************************");
+}
+
 
 int readSonar(){
 

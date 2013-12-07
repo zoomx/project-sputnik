@@ -10,11 +10,10 @@ class Sputnik{
 		void backward();
 		void turn(int turnTime, int direction);
 		void stopMoving();
+		void stopMoving(int stopTime);
 		
 	private:
 		boolean verbose = false;
-		int echoPin =7; // Echo Pin
-		int trigPin =8; // Trigger Pin
 
 		int directionPin = 9; // HIGH is forward, LOW is backward
 		int motorPin = 10;   // HIGH is on, LOW is off
