@@ -27,8 +27,6 @@ class Sputnik{
 		int offTime = 1000; //the number of milliseconds for the motor to turn off for
 		  
 		int threshold = 100;  //In centimeters, the distance from objects where the car stops
-		 
-		int dir = 1; // At the start we move forward */
 
 };
 
