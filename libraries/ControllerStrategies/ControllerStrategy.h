@@ -1,8 +1,7 @@
 #ifndef ControllerStrategy_h
 #define ControllerStrategy_h
-#include "Arduino.h"
-
 #include <Sputnik.h>
+#include "Arduino.h"
 
 class ControllerStrategy{
 	public:
