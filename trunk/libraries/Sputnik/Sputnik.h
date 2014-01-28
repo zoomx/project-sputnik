@@ -4,6 +4,7 @@
 
 class Sputnik{
 	public:
+		Sputnik();
 		Sputnik(int directionPin, int motorPin, int turnPin, int turnPowerPin);
 		Sputnik(int directionPin, int motorPin, int turnPin, int turnPowerPin,boolean verbose);
 		void forward();

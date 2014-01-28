@@ -1,5 +1,7 @@
 #include "Arduino.h"
 #include "Sputnik.h"
+Sputnik::Sputnik(){
+}
 
 Sputnik::Sputnik(int directionPin, int motorPin, int turnPin, int turnPowerPin){
 	Sputnik(directionPin,motorPin,turnPin,turnPowerPin,false);
