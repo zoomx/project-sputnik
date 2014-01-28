@@ -1,6 +1,6 @@
+#include <Sputnik.h>
 #include <Controller.h>
 
-#include <Sputnik.h>
 
 
 int onTime = 1000;  //the number of milliseconds for the motor to turn on for
