@@ -1,19 +1,24 @@
 #include <Sputnik.h>
+#include <Adafruit_MotorShield.h>
+#include <Wire.h>
+
+
 
 int echoPin =7; // Echo Pin
 int trigPin =8; // Trigger Pin
-
+int dir=1;
 int ledPort = 14;     // Led for sonar treshold. 
 
 int onTime = 1000;  //the number of milliseconds for the motor to turn on for
 int offTime = 1000; //the number of milliseconds for the motor to turn off for
 
 int threshold = 100;  //In centimeters, the distance from objects where the car stops
-
+int numBackwards = 0;
 Sputnik sputnik  (9,10,21,20,true);
 void setup(){
   
   Serial.begin (9600);
+  sputnik.setup();
 
   pinMode(ledPort, OUTPUT); 
   pinMode(trigPin, OUTPUT);
@@ -22,55 +27,72 @@ void setup(){
 
 
 void loop() {
-  dummyRun();
+  //dummyRun();
 
-  /*
+  
   switch (dir) {
    case 1:
-   forward();
-   break;
+       sputnik.forward();
+       break;
    case 2:
-   backward();
-   break;
+       sputnik.backward();
+       numBackwards ++;
+           if(numBackwards > 100){
+               dir = 1;
+           }
+       break;
    default:
-   stopMoving();
-   break;
+       sputnik.stopMoving();
+       break;
    }
    int dist = readSonar();
    if(dist < threshold && dist != -1 ){
-   digitalWrite(ledPort, HIGH);
-   if(dir != 2){
-   stopMoving();
+       digitalWrite(ledPort, HIGH);
+       sputnik.stopMoving();
+       if(dir == 1){
+           dir = 2;
+       } else{
+           dir = 1;
+       }
    }
-   dir = 2;
-   }else{
-   digitalWrite(ledPort, LOW);
-   if(dir != 1){
-   stopMoving();
-   }
-   dir = 1;
-   }*/
+   
 }
 
 void dummyRun(){
   delay(1000);
   Serial.println("Begin dummyrun");
-  sputnik.forward();
+  sputnik.forward(200);
   delay(1000);
   sputnik.stopMoving();
+  delay(1000);
+  sputnik.backward(200);
+  delay(1000);
+  sputnik.stopMoving();
+  delay(1000);
+  sputnik.turn(0);
+  sputnik.forward(255);
   delay(1000);
   sputnik.backward();
   delay(1000);
   sputnik.stopMoving();
-  sputnik.forward();
-  sputnik.turn(1000, 0);
-  sputnik.stopMoving();
-  sputnik.backward();
+  sputnik.neutral();
   delay(1000);
-  sputnik.stopMoving();
+  sputnik.turn(1);
+  sputnik.backward(255);
+  delay(2000);
   sputnik.forward();
-  sputnik.turn(1000, 1);
+  delay(2000);
   sputnik.stopMoving();
+  sputnik.neutral();
+  delay(1000);
+ 
+  //sputnik.stopMoving();
+  //sputnik.backward();
+  //delay(1000);
+  //sputnik.stopMoving();
+  //sputnik.forward();
+  //sputnik.turn(1000, 1,100);
+  //sputnik.stopMoving();
 
   Serial.println("End dummyrun");
 
@@ -91,7 +113,7 @@ int readSonar(){
   duration -= 5;
 
   int distance = duration/76;
-  //Serial.println(distance);
+  Serial.println(distance);
   delay(50);
   if(distance ==0){
     distance = -1;
