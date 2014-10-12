@@ -8,8 +8,8 @@ int offTime = 1000; //the snumber of milliseconds for the motor to turn off for
 
 
 Sputnik sputnik  (9,10,21,20,true);
-//AutonomousStrategy strategy (sputnik);
-XBeeStrategy strategy (sputnik);
+DummyStrategy strategy (sputnik);
+//XBeeStrategy strategy (sputnik);
 
 void setup(){
   
